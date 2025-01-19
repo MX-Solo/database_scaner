@@ -1,0 +1,27 @@
+#create Database :
+
+    docker run -d --name scylla-node -p 9042:9042 -p 10000:10000 scylladb/scylla
+
+    docker exec -it scylla-node cqlsh
+
+    CREATE KEYSPACE your_keyspace
+    WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+    USE your_keyspace;
+
+    CREATE TABLE your_table (
+        id UUID PRIMARY KEY,
+        name TEXT,
+        email TEXT,
+        comment TEXT
+    );
+
+#download role :
+
+    wget https://github.com/coreruleset/coreruleset/archive/refs/tags/v4.0.0.tar.gz
+
+    tar -xzvf v4.0.0.tar.gz --strip-components 1 -C /etc/crs4
+
+
+
+python version 10
